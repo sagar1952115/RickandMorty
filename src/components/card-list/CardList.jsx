@@ -2,10 +2,10 @@ import React from "react";
 import styles from "./Cardlist.module.css";
 import Card from "../card/Card";
 
-const CardList = ({ userData }) => {
+const CardList = ({ userData, isLoading }) => {
   return (
     <div className={styles.container}>
-      {userData.length !== 0 ? (
+      {userData.length !== 0 && !isLoading ? (
         userData.map((user, index) => {
           return <Card key={index} user={user} />;
         })

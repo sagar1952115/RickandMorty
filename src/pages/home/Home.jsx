@@ -69,7 +69,7 @@ const Home = () => {
         setSpecies={setSpecies}
       />
       {!isLoading ? (
-        <CardList userData={userData} />
+        <CardList isLoading={isLoading} userData={userData} />
       ) : (
         <div className={styles.spinner}>
           <Audio
