@@ -16,6 +16,7 @@ const Home = () => {
   const [page, setPage] = useState(1);
 
   const [totalPage, setTotalPage] = useState("");
+  // Fetch character data of the given page
   const getData = async () => {
     try {
       setIsLoading(true);
@@ -43,6 +44,7 @@ const Home = () => {
       console.log(err);
     }
   };
+
   useEffect(() => {
     getData();
     // eslint-disable-next-line

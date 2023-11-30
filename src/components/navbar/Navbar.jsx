@@ -20,6 +20,8 @@ const Navbar = ({
 }) => {
   const [isFiltering, setIsFiltering] = useState(false);
 
+  // function to clear all the applied filters
+
   const handleClearFilters = async () => {
     setSearch("");
     setStatus(null);
@@ -31,8 +33,8 @@ const Navbar = ({
       if (res.status === 200) {
         setUserData(res.data?.results);
         setTotalPage(res.data?.info?.pages);
-        setIsFiltering(false);
         setPage(0);
+        setIsFiltering(false);
       }
       setIsLoading(false);
     } catch (err) {
@@ -42,6 +44,9 @@ const Navbar = ({
       console.log(err);
     }
   };
+
+  // function to apply all the choosen filters
+
   const handleFilters = async () => {
     if (!search && !status && !gender && !species) {
       setIsFiltering(false);
@@ -59,7 +64,7 @@ const Navbar = ({
         },
       });
       if (res.status === 200) {
-        setUserData(res.data.results);
+        setUserData(res.data?.results);
         setTotalPage(res.data?.info?.pages);
         setPage(1);
       }
@@ -73,6 +78,8 @@ const Navbar = ({
   };
 
   const getData = async (e) => {
+    // if search input is not empty and enter key is pressed
+
     if (search !== "" && e.keyCode === 13) {
       try {
         setIsLoading(true);
@@ -124,6 +131,9 @@ const Navbar = ({
           )}
         </div>
       </div>
+
+      {/* This is the Filter Section */}
+
       {isFiltering && (
         <div className={styles.filterContainer}>
           <div className={styles.filterDetails}>

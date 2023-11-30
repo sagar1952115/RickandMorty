@@ -6,7 +6,9 @@ const Profile = () => {
   const { id } = useParams();
   const [profileInfo, setProfileInfo] = useState("");
   const [episodeInfo, setEpisodeInfo] = useState([]);
-  console.log("This is from profile");
+
+  // fetch user data of userId = id
+
   const handleProfile = async (id) => {
     try {
       const res = await axios.get(
@@ -16,6 +18,7 @@ const Profile = () => {
       if (res.status === 200) {
         setProfileInfo(res.data);
         console.log(res.data);
+
         const episodeData = await Promise.all(
           res.data?.episode.map(async (item) => await getEpisodeInfo(item))
         );
@@ -25,10 +28,9 @@ const Profile = () => {
     } catch (err) {
       console.log(err);
     }
-
-    console.log(profileInfo);
-    console.log(episodeInfo);
   };
+
+  // Get data of the episodes where user was part of the episode.
 
   const getEpisodeInfo = async (url) => {
     try {

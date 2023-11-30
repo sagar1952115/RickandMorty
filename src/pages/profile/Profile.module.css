@@ -3,7 +3,6 @@
 }
 .subContainer {
   display: flex;
-  /* background-color: white; */
   background-color: #e7e3e3;
 
   justify-content: center;
@@ -14,7 +13,6 @@
   display: flex;
   position: relative;
   top: 7rem;
-  /* z-index: 999; */
   width: 14rem;
   height: 14rem;
   border-radius: 50%;
