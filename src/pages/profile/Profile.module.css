@@ -1,0 +1,74 @@
+.container {
+  width: 100%;
+}
+.subContainer {
+  display: flex;
+  /* background-color: white; */
+  background-color: #e7e3e3;
+
+  justify-content: center;
+  width: 100%;
+}
+
+.image {
+  display: flex;
+  position: relative;
+  top: 7rem;
+  /* z-index: 999; */
+  width: 14rem;
+  height: 14rem;
+  border-radius: 50%;
+}
+.personalInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  padding: 2rem;
+  font-size: 1.5rem;
+}
+.personalInfo h2 {
+  margin: 2rem;
+  text-align: center;
+}
+.originDetails {
+  width: 70%;
+  padding: 2rem;
+  font-size: 1.5rem;
+}
+.originDetails h2 {
+  text-align: center;
+  margin: 2rem;
+}
+
+.info {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 7rem 0;
+}
+.episodesContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.episode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
+  text-align: center;
+  width: 10rem;
+  min-height: 4rem;
+  background-color: rgb(206, 244, 232);
+  border-radius: 0.5rem;
+}
+@media screen and (max-width: 630px) {
+  .originDetails,
+  .personalInfo {
+    width: 100%;
+  }
+}

@@ -1,0 +1,109 @@
+.container {
+  width: 100%;
+  background-color: white;
+  min-height: 5rem;
+  display: flex;
+  flex-direction: column;
+}
+.navbarContainer {
+  display: flex;
+  min-height: 5rem;
+  align-items: center;
+  justify-content: space-around;
+}
+.filterContainer {
+  width: 100%;
+  border-top: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-around;
+  padding: 1rem;
+}
+.btn {
+  width: max-content;
+  display: flex;
+  margin: auto;
+}
+.btn button {
+  width: 8rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: none;
+  color: white;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+.btn :nth-child(1) {
+  background-color: #3189e1f3;
+}
+.btn :nth-child(2) {
+  background-color: red;
+}
+.filterDetails {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+}
+.status > p,
+.gender > p,
+.species > p,
+.types > p {
+  margin: 1rem;
+  text-align: left;
+}
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.search {
+  width: 30rem;
+}
+.search input {
+  width: 100%;
+  height: 2rem;
+  border: 1px solid gray;
+  outline: none;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-radius: 1rem;
+}
+.filter {
+  /* width: 2rem; */
+  cursor: pointer;
+}
+
+h1 {
+  text-align: center;
+}
+@media screen and (max-width: 630px) {
+  .filterContainer {
+    width: 100%;
+    border-top: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 1rem;
+  }
+  .location > p,
+  .status > p,
+  .episode > div,
+  .gender > div,
+  .species > div,
+  .types > div {
+    text-align: left;
+  }
+  .navbarContainer {
+    flex-direction: column;
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+  .navbarContainer > div {
+    margin: 0.3rem;
+  }
+  .search {
+    width: 70%;
+  }
+}
