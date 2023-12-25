@@ -6,7 +6,9 @@ const Profile = () => {
   const { id } = useParams();
   const [profileInfo, setProfileInfo] = useState("");
   const [episodeInfo, setEpisodeInfo] = useState([]);
-
+  const episode = localStorage.getItem("episode");
+  const newEpisodeArray = episode ? JSON.parse(episode) : [];
+  console.log(newEpisodeArray);
   // fetch user data of userId = id
 
   const handleProfile = async (id) => {
@@ -17,23 +19,52 @@ const Profile = () => {
 
       if (res.status === 200) {
         setProfileInfo(res.data);
-        console.log(res.data);
 
+        const unCachedEpisode = getUncachedEpisode(res.data.episode);
         const episodeData = await Promise.all(
-          res.data?.episode.map(async (item) => await getEpisodeInfo(item))
+          unCachedEpisode.map(async (item) => await getEpisodeInfo(item))
         );
-        setEpisodeInfo(episodeData);
-        console.log(episodeData);
+        if (episode) {
+          const episodeArray = newEpisodeArray.concat(episodeData);
+          localStorage.setItem("episode", JSON.stringify(episodeArray));
+        } else {
+          localStorage.setItem("episode", JSON.stringify(episodeData));
+        }
+        const userEpisodeInfo = newEpisodeArray.filter((cachedEpisode) =>
+          res.data.episode.some((url) => url === cachedEpisode.url)
+        );
+
+        setEpisodeInfo(userEpisodeInfo);
       }
     } catch (err) {
       console.log(err);
     }
   };
 
+  // This function will get the url of the episode which are not present in localstorage
+
+  const getUncachedEpisode = (userEpisode) => {
+    if (newEpisodeArray.length === 0) return userEpisode;
+
+    const unCachedEpisode = userEpisode
+      .filter(
+        (url) =>
+          !newEpisodeArray
+            .map((cachedEpisode) => cachedEpisode.url)
+            .includes(url)
+      )
+      .map((url) => url);
+
+    console.log(unCachedEpisode);
+
+    return unCachedEpisode;
+  };
+
   // Get data of the episodes where user was part of the episode.
 
   const getEpisodeInfo = async (url) => {
     try {
+      console.log(url);
       const response = await axios.get(url);
 
       if (response.status === 200) {
